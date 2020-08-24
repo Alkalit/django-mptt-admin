@@ -26,7 +26,7 @@ from . import util
 class TreeChangeList(ChangeList):
     TREE_IGNORED_PARAMS = IGNORED_PARAMS + ('_', 'node', 'selected_node')
 
-    def __init__(self, request, model, model_admin, list_filter, node_id, max_level):
+    def __init__(self, request, model, model_admin, list_filter, node_id, max_level, list_per_page=100, list_max_show_all=200):
         self.node_id = node_id
         self.max_level = max_level
 
@@ -40,9 +40,9 @@ class TreeChangeList(ChangeList):
             date_hierarchy=None,
             search_fields=(),
             list_select_related=(),
-            list_per_page=100,
+            list_per_page=list_per_page,
             list_editable=(),
-            list_max_show_all=200,
+            list_max_show_all=list_max_show_all,
         )
 
         if django.VERSION[0:2] >= (2, 1):
